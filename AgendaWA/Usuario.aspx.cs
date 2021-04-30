@@ -14,9 +14,22 @@ namespace AgendaWA
 
         }
 
-        protected void ListView1_SelectedIndexChanged(object sender, EventArgs e)
+        protected void SqlDataSourceUsers_Inserted(object sender, SqlDataSourceStatusEventArgs e)
         {
+            if (e.Exception != null)
+            {
+                LMsg.Text = "Inserido um registro duplicado ou com campos em branco.";
+                e.ExceptionHandled = true;
+            }
+        }
 
+        protected void SqlDataSourceUsers_Updated(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            if (e.Exception != null)
+            {
+                LMsg.Text = "Alterando um registro sem informar todos os campos.";
+                e.ExceptionHandled = true;
+            }
         }
     }
 }

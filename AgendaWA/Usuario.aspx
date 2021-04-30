@@ -130,7 +130,7 @@
         DeleteCommand="DELETE FROM [Usuario] WHERE [Email] = @Email" 
         InsertCommand="INSERT INTO [Usuario] ([Email], [Nome], [Senha]) VALUES (@Email, @Nome, @Senha)" 
         SelectCommand="SELECT * FROM [Usuario]" 
-        UpdateCommand="UPDATE [Usuario] SET [Nome] = @Nome, [Senha] = @Senha WHERE [Email] = @Email">
+        UpdateCommand="UPDATE [Usuario] SET [Nome] = @Nome, [Senha] = @Senha WHERE [Email] = @Email" OnInserted="SqlDataSourceUsers_Inserted" OnUpdated="SqlDataSourceUsers_Updated">
         <DeleteParameters>
             <asp:Parameter Name="Email" Type="String" />
         </DeleteParameters>
@@ -145,4 +145,6 @@
             <asp:Parameter Name="Email" Type="String" />
         </UpdateParameters>
     </asp:SqlDataSource>
+    <br />
+    <asp:Label ID="LMsg" runat="server" Font-Bold="True" Font-Size="X-Large"></asp:Label>
 </asp:Content>
